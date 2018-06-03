@@ -14,7 +14,7 @@ const target = TARGET_NODE
   : 'client'
 
 module.exports = {
-  configureWebpack: config => ({
+  configureWebpack: () => ({
     entry: `./src/entry-${target}`,
     target: TARGET_NODE ? 'node' : 'web',
     node: TARGET_NODE ? undefined : false,

@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 const fs = require('fs')
 const path = require('path')
 const express = require('express')
@@ -7,7 +9,6 @@ const { createBundleRenderer } = require('vue-server-renderer')
 const devServerBaseURL = process.env.DEV_SERVER_BASE_URL || 'http://localhost'
 const devServerPort = process.env.DEV_SERVER_PORT || 8080
 
-const isProd = process.env.NODE_ENV === 'production'
 const app = express()
 
 function createRenderer (bundle, options) {
@@ -17,7 +18,6 @@ function createRenderer (bundle, options) {
 }
 
 let renderer
-let readyPromise
 const templatePath = path.resolve(__dirname, './src/index.template.html')
 
 const bundle = require('./dist/vue-ssr-server-bundle.json')
@@ -27,30 +27,31 @@ renderer = createRenderer(bundle, {
   template,
   clientManifest
 })
-
-
-app.use('/js/main*', proxy({
-  target: `${devServerBaseURL}/${devServerPort}`, 
-  changeOrigin: true,
-  pathRewrite: function (path, req) { 
-    return path.includes('main')
-    ? '/main.js'
-    : path
-  },
-  prependPath: false
-}));
-
-app.use('/*hot-update*', proxy({
-  target: `${devServerBaseURL}/${devServerPort}`, 
-  changeOrigin: true,
-}));
-
-
-app.use('/sockjs-node', proxy({
-  target: `${devServerBaseURL}/${devServerPort}`, 
-  changeOrigin: true,
-  ws: true
-}));
+ 
+if (process.env.NODE_ENV !== 'production') {
+  app.use('/js/main*', proxy({
+    target: `${devServerBaseURL}/${devServerPort}`, 
+    changeOrigin: true,
+    pathRewrite: function (path) { 
+      return path.includes('main')
+      ? '/main.js'
+      : path
+    },
+    prependPath: false
+  }));
+  
+  app.use('/*hot-update*', proxy({
+    target: `${devServerBaseURL}/${devServerPort}`, 
+    changeOrigin: true,
+  }));
+  
+  
+  app.use('/sockjs-node', proxy({
+    target: `${devServerBaseURL}/${devServerPort}`, 
+    changeOrigin: true,
+    ws: true
+  }));
+}
 
 
 app.use('/js', express.static(path.resolve(__dirname, './dist/js')))
@@ -80,3 +81,5 @@ app.get('*', (req, res) => {
     res.send(html)
   })
 })
+
+module.exports = app

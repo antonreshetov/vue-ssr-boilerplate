@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 const { spawn } = require('child_process');
 const serve = spawn('npx', ['vue-cli-service', 'serve']);
 const start = spawn('npm', ['run', 'start']);
