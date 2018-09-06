@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "serve": "npm run build && node scripts/serve",
+    "serve:win": "npm run build:win && node scripts/serve",
     "build": "npm run build:server && mv dist/vue-ssr-server-bundle.json bundle && npm run build:client && mv bundle dist/vue-ssr-server-bundle.json",
+    "build:win": "npm run build:server && move dist\\vue-ssr-server-bundle.json bundle && npm run build:client && move bundle dist\\vue-ssr-server-bundle.json",
     "build:client": "vue-cli-service build",
     "build:server": "cross-env WEBPACK_TARGET=node vue-cli-service build",
     "start": "cross-env NODE_ENV=production node scripts/start",

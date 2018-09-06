@@ -1,8 +1,13 @@
 /* eslint-disable no-console */
 
+const isWindows = /^win/.test(process.platform);
+
+const npx = isWindows ? 'npx.cmd' : 'npx';
+const npm = isWindows ? 'npm.cmd' : 'npm';
+
 const { spawn } = require('child_process');
-const serve = spawn('npx', ['vue-cli-service', 'serve']);
-const start = spawn('npm', ['run', 'start']);
+const serve = spawn(npx, ['vue-cli-service', 'serve']);
+const start = spawn(npm, ['run', 'start']);
 
 const log = console.log
 const errAndExit = (err) => {
