@@ -7,7 +7,7 @@ var proxy = require('http-proxy-middleware');
 const { createBundleRenderer } = require('vue-server-renderer')
 
 const devServerBaseURL = process.env.DEV_SERVER_BASE_URL || 'http://localhost'
-const devServerPort = process.env.DEV_SERVER_PORT || 8080
+const devServerPort = process.env.DEV_SERVER_PORT || 8081
 
 const app = express()
 
@@ -30,7 +30,7 @@ renderer = createRenderer(bundle, {
  
 if (process.env.NODE_ENV !== 'production') {
   app.use('/js/main*', proxy({
-    target: `${devServerBaseURL}/${devServerPort}`, 
+    target: `${devServerBaseURL}:${devServerPort}`, 
     changeOrigin: true,
     pathRewrite: function (path) { 
       return path.includes('main')
@@ -41,13 +41,13 @@ if (process.env.NODE_ENV !== 'production') {
   }));
   
   app.use('/*hot-update*', proxy({
-    target: `${devServerBaseURL}/${devServerPort}`, 
+    target: `${devServerBaseURL}:${devServerPort}`, 
     changeOrigin: true,
   }));
   
   
   app.use('/sockjs-node', proxy({
-    target: `${devServerBaseURL}/${devServerPort}`, 
+    target: `${devServerBaseURL}:${devServerPort}`, 
     changeOrigin: true,
     ws: true
   }));
