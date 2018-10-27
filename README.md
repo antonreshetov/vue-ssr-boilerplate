@@ -17,20 +17,12 @@ Start dev server:
 ```
 yarn serve
 ```
-> Windows:
-```
-yarn serve:win
-```
 
 Build for production:
 
 > Mac/Linux:
 ```
 yarn build
-```
-> Windows:
-```
-yarn build:win
 ```
 
 Start production server:
