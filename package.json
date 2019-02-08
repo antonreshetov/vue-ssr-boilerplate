@@ -12,6 +12,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "express": "^4.16.4",
+    "http-proxy-middleware": "^0.19.1",
     "vue": "^2.6.3",
     "vue-router": "^3.0.1",
     "vue-server-renderer": "^2.6.3"
