@@ -1,16 +1,14 @@
 <template>
   <div id="app">
-    <HelloWorld parent="something" />
+    <HelloWorld msg="Hello, World!" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    HelloWorld : () => import('./components/HelloWorld.vue'),
   }
 }
 </script>

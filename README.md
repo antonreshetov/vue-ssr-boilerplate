@@ -12,15 +12,12 @@ yarn
 
 Start dev server:
 
-> Mac/Linux:
-
 ```
 yarn serve
 ```
 
 Build for production:
 
-> Mac/Linux:
 ```
 yarn build
 ```

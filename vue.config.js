@@ -14,6 +14,14 @@ const target = TARGET_NODE
   : 'client'
 
 module.exports = {
+  devServer: {
+    headers: {
+      'Access-Control-Allow-Origin': '*'
+    }
+  },
+  css: {
+    extract: process.env.NODE_ENV === 'production'
+  },
   configureWebpack: () => ({
     entry: `./src/entry-${target}`,
     target: TARGET_NODE ? 'node' : 'web',
@@ -29,7 +37,8 @@ module.exports = {
     output: {
       libraryTarget: TARGET_NODE 
         ? 'commonjs2' 
-        : undefined
+        : undefined,
+        chunkFilename: '[name].bundle.js'
     },
     optimization: {
       splitChunks: undefined

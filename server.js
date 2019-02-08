@@ -29,7 +29,7 @@ renderer = createRenderer(bundle, {
 })
  
 if (process.env.NODE_ENV !== 'production') {
-  app.use('/js/main*', proxy({
+  app.use('/main*', proxy({
     target: `${devServerBaseURL}:${devServerPort}`, 
     changeOrigin: true,
     pathRewrite: function (path) { 
