@@ -37,8 +37,7 @@ module.exports = {
     output: {
       libraryTarget: TARGET_NODE 
         ? 'commonjs2' 
-        : undefined,
-        chunkFilename: '[name].bundle.js'
+        : undefined
     },
     optimization: {
       splitChunks: undefined
