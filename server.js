@@ -55,6 +55,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 
 app.use('/js', express.static(path.resolve(__dirname, './dist/js')))
+app.use('/img', express.static(path.resolve(__dirname, './dist/img')))
 app.use('/css', express.static(path.resolve(__dirname, './dist/css')))
 
 app.get('*', (req, res) => {
