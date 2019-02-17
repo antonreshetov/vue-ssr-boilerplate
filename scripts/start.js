@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 const app = require('../server')
 
 const port = process.env.PORT || 8080
