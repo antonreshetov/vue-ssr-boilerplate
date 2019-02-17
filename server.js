@@ -63,7 +63,7 @@ app.get('*', (req, res) => {
   res.setHeader("Content-Type", "text/html")
 
   const context = {
-    title: 'Vue HN 2.0', // default title
+    title: 'Vue CLI 3 SSR example',
     url: req.url
   }
 
