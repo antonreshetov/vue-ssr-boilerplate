@@ -3,6 +3,18 @@
 </p>
 <h1 align="center">Vue SSR Boilerplate</h1>
 
+## Features
+
+### Server Side Rendering
+
+- Vue + vue-router + vuex working together
+- Server-side data pre-fetching
+- Client-side state & DOM hydration
+- Route-level code splitting
+
+### Progressive Web App
+- App manifest
+
 ## Usage
 
 Install dependencies:
@@ -38,6 +50,5 @@ docker-compose up --build -d
 ```
 
 ## Roadmap
-
 - [ ] Service worker
 - [ ] Update readme
