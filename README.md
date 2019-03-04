@@ -3,6 +3,8 @@
 </p>
 <h1 align="center">Vue SSR Boilerplate</h1>
 
+A fork of [vue-cli-ssr-example](https://github.com/eddyerburgh/vue-cli-ssr-example) that adds some additional functions.
+
 ## Features
 
 ### Server Side Rendering
