@@ -8,6 +8,7 @@ const { createBundleRenderer } = require('vue-server-renderer')
 
 const devServerBaseURL = process.env.DEV_SERVER_BASE_URL || 'http://localhost'
 const devServerPort = process.env.DEV_SERVER_PORT || 8081
+const isDev = process.env.NODE_ENV === 'development'
 
 const app = express()
 
@@ -27,10 +28,11 @@ renderer = createRenderer(bundle, {
   template,
   clientManifest
 })
- 
-if (process.env.NODE_ENV !== 'production') {
-  app.use('/main*', proxy({
-    target: `${devServerBaseURL}:${devServerPort}`, 
+
+if (isDev) {
+  // Проксировать все js файлы, например при разделения на чанки
+  // при ленивой загрузки
+  app.use('/*.js', proxy({
     changeOrigin: true,
     pathRewrite: function (path) { 
       return path.includes('main')
