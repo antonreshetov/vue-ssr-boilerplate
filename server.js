@@ -87,4 +87,6 @@ app.get('*', (req, res) => {
   })
 })
 
-module.exports = app
+app.listen(port, () => {
+  console.log(`Server started at localhost:${port}`)
+})
