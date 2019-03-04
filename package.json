@@ -8,7 +8,7 @@
     "build": "npm run build:server -- --silent && npm run build:client -- --no-clean --silent",
     "build:client": "vue-cli-service build",
     "build:server": "cross-env WEBPACK_TARGET=node vue-cli-service build",
-    "start": "node scripts/start",
+    "start": "nodemon server",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
