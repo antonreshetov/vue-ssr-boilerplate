@@ -1,6 +1,6 @@
 {
-  "name": "vue-cli-ssr-example",
-  "version": "0.1.0",
+  "name": "vue-ssr-boilerplate",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "serve": "cross-env NODE_ENV=development npm run build && cross-env NODE_ENV=development npm-run-all -p start serve:client",
