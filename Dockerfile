@@ -3,18 +3,16 @@ FROM node:10-alpine
 ENV PORT 8080
 ENV NODE_ENV production
 
-# Create app directory
 WORKDIR /usr/src/app
 
-# Bundle app source
-COPY . /usr/src/app
+COPY /package*.json ./
 
-# Install all dependencies, including devDependencies for the build job
+RUN apk update && apk add bash
 RUN NODE_ENV=development yarn install && yarn cache clean
 
-RUN yarn build 
+COPY . .
 
-# Expose port
+RUN yarn build
+RUN npm i -g nodemon
+
 EXPOSE $PORT
-
-CMD [ "npm", "start" ]
