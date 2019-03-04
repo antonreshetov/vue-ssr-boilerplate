@@ -1,6 +1,7 @@
 {
   "name": "vue-ssr-boilerplate",
   "version": "1.0.0",
+  "description": "Vue SSR Boilerplate",
   "private": true,
   "scripts": {
     "serve": "cross-env NODE_ENV=development npm run build && cross-env NODE_ENV=development npm-run-all -p start serve:client",
@@ -42,6 +43,14 @@
     "vue-template-compiler": "^2.6.0",
     "webpack-node-externals": "^1.7.2"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antonreshetov/vue-ssr-boilerplate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/antonreshetov/vue-ssr-boilerplate/issues"
+  },
+  "homepage": "https://github.com/antonreshetov/vue-ssr-boilerplate#readme",
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
