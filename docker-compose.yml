@@ -7,7 +7,8 @@ services:
       dockerfile: ./Dockerfile
     image: vue_ssr_image
     container_name: web
-    command: nodemon server
+    command: >
+      sh -c "yarn build && nodemon server"
     ports:
       - '80:8080'
     restart: always
